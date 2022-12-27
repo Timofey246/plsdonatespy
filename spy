@@ -1,0 +1,93 @@
+-- Made with love by BloodyHacker#2135
+
+
+
+
+local function OnPlayerAdded(v)
+	wait(5)
+	if not v then
+		print("Player Disconnected.")
+	else
+		local plr = game.Workspace:WaitForChild(v.Name)
+		local BillboardGUI = Instance.new('BillboardGui', plr:WaitForChild("Head"))
+		BillboardGUI.Name = "GUI"
+		BillboardGUI.AlwaysOnTop = true
+		BillboardGUI.Size = UDim2.new(5,0,2.5,0)
+		BillboardGUI.ExtentsOffset = Vector3.new(0, 4, 0)
+		local GUI = Instance.new('Frame', BillboardGUI)
+		GUI.Name = "GUI"
+		GUI.Size = UDim2.new(1,0,1,0)
+		GUI.BackgroundColor3 = Color3.fromRGB(math.random(1,255),math.random(1,255),math.random(1,255))
+		GUI.BackgroundTransparency = 0.75
+		local corner = Instance.new('UICorner', GUI)
+		corner.Name = "Corner"
+		corner.CornerRadius = UDim.new(0.25,0)
+		local donated = Instance.new('TextLabel', GUI)
+		donated.Size = UDim2.new(1,0,0.5,0)
+		donated.BackgroundTransparency = 1
+		donated.Name = "Donated"
+		donated.TextScaled = true
+		donated.Font = Enum.Font.FredokaOne
+		if not v:WaitForChild("leaderstats"):FindFirstChild("Donated") then
+			donated.Text = "Anonymous"
+		else
+			donated.Text = "Donated: "..v:WaitForChild("leaderstats"):WaitForChild("Donated").Value.." R$"
+		end
+		donated.TextColor3 = Color3.new(1, 1, 0)
+		local raised = Instance.new('TextLabel', GUI)
+		raised.Size = UDim2.new(1,0,0.5,0)
+		raised.Position = UDim2.new(0,0,0.5,0)
+		raised.BackgroundTransparency = 1
+		raised.Name = "Raised"
+		raised.TextScaled = true
+		raised.Font = Enum.Font.FredokaOne
+		raised.Text = "Raised: "..v:WaitForChild("leaderstats"):WaitForChild("Raised").Value.." R$"
+		raised.TextColor3 = Color3.new(1, 0, 0)
+		local textstroke = Instance.new('UIStroke', GUI)
+		textstroke.Color = Color3.fromRGB(math.random(1,255),math.random(1,255),math.random(1,255))
+		textstroke.Thickness = 3
+	end
+end
+
+game.Players.PlayerAdded:Connect(OnPlayerAdded)
+
+for i, v in pairs(game.Players:GetChildren()) do
+	local plr = game.Workspace:WaitForChild(v.Name)
+	local BillboardGUI = Instance.new('BillboardGui', plr:WaitForChild("Head"))
+	BillboardGUI.Name = "GUI"
+	BillboardGUI.AlwaysOnTop = true
+	BillboardGUI.Size = UDim2.new(5,0,2.5,0)
+	BillboardGUI.ExtentsOffset = Vector3.new(0, 4, 0)
+	local GUI = Instance.new('Frame', BillboardGUI)
+	GUI.Name = "GUI"
+	GUI.Size = UDim2.new(1,0,1,0)
+	GUI.BackgroundColor3 = Color3.fromRGB(math.random(1,255),math.random(1,255),math.random(1,255))
+	GUI.BackgroundTransparency = 0.75
+	local corner = Instance.new('UICorner', GUI)
+	corner.Name = "Corner"
+	corner.CornerRadius = UDim.new(0.25,0)
+	local donated = Instance.new('TextLabel', GUI)
+	donated.Size = UDim2.new(1,0,0.5,0)
+	donated.BackgroundTransparency = 1
+	donated.Name = "Donated"
+	donated.TextScaled = true
+	donated.Font = Enum.Font.FredokaOne
+	if not v:WaitForChild("leaderstats"):FindFirstChild("Donated") then
+		donated.Text = "Anonymous"
+	else
+		donated.Text = "Donated: "..v:WaitForChild("leaderstats"):WaitForChild("Donated").Value.." R$"
+	end
+	donated.TextColor3 = Color3.new(1, 1, 0)
+	local raised = Instance.new('TextLabel', GUI)
+	raised.Size = UDim2.new(1,0,0.5,0)
+	raised.Position = UDim2.new(0,0,0.5,0)
+	raised.BackgroundTransparency = 1
+	raised.Name = "Raised"
+	raised.TextScaled = true
+	raised.Font = Enum.Font.FredokaOne
+	raised.Text = "Raised: "..v:WaitForChild("leaderstats"):WaitForChild("Raised").Value.." R$"
+	raised.TextColor3 = Color3.new(1, 0, 0)
+	local textstroke = Instance.new('UIStroke', GUI)
+	textstroke.Color = Color3.fromRGB(math.random(1,255),math.random(1,255),math.random(1,255))
+	textstroke.Thickness = 3
+end
